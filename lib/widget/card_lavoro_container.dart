@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foglio_ore/model/lavoro.dart';
+import 'package:foglio_ore/utils/constants.dart';
 import 'package:foglio_ore/widget/card_lavoro.dart';
 
 class CardLavoroContainer extends StatelessWidget {
@@ -10,8 +11,11 @@ class CardLavoroContainer extends StatelessWidget {
   List<Widget> _buildListaCardLavoro() {
     List<Widget> widgetLavori = [];
 
-    for (Lavoro lavoro in lavori) {
-      widgetLavori.add(CardLavoro(lavoro: lavoro));
+    for (int i = 0; i < lavori.length; i++) {
+      widgetLavori.add(CardLavoro(
+        lavoro: lavori[i],
+        cardColor: AppColors.cardColors[i],
+      ));
     }
     return widgetLavori;
   }

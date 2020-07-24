@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foglio_ore/model/stato.dart';
 import 'package:foglio_ore/screen/home_page.dart';
+import 'package:foglio_ore/utils/constants.dart';
 import 'package:foglio_ore/utils/data_provider.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
@@ -26,8 +27,15 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Foglio ore',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
+        theme: ThemeData.light().copyWith(
+          textTheme: ThemeData.light().textTheme.copyWith(
+                bodyText1: TextStyle(
+                  color: AppColors.defaultText,
+                ),
+              ),
+          primaryColor: AppColors.primary,
+          accentColor: AppColors.accent,
+          backgroundColor: AppColors.defaultBackground,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: HomePage(),

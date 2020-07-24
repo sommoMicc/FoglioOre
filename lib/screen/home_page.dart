@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:foglio_ore/model/stato.dart';
 import 'package:foglio_ore/screen/pdf_preview.dart';
+import 'package:foglio_ore/utils/constants.dart';
 import 'package:foglio_ore/utils/data_provider.dart';
 import 'package:foglio_ore/utils/pdf_utils.dart';
 import 'package:foglio_ore/widget/card_lavoro_container.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -57,6 +59,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.defaultBackground,
       appBar: AppBar(
         title: Text("Foglio ore"),
         actions: <Widget>[
@@ -75,23 +78,47 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            TableCalendar(
-              locale: 'it_IT',
-              startingDayOfWeek: StartingDayOfWeek.monday,
-              availableGestures: AvailableGestures.none,
-              calendarController: _calendarController,
-              headerStyle: HeaderStyle(
-                formatButtonVisible: false,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+          child: Column(
+            children: <Widget>[
+              TableCalendar(
+                locale: 'it_IT',
+                startingDayOfWeek: StartingDayOfWeek.monday,
+                availableGestures: AvailableGestures.none,
+                calendarController: _calendarController,
+                headerStyle: HeaderStyle(
+                  formatButtonVisible: false,
+                  titleTextStyle: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  titleTextBuilder: (DateTime data, locale) =>
+                      DateFormat.yMMMM(locale).format(data).toUpperCase(),
+                  centerHeaderTitle: true,
+                ),
+                initialSelectedDay:
+                    DateTime(DateTime.now().year, DateTime.now().month, 1),
+                onDaySelected: _daySelectedCallback,
+                calendarStyle: CalendarStyle(
+                  weekdayStyle: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.defaultText,
+                  ),
+                  selectedColor: AppColors.primary,
+                  todayStyle: TextStyle(
+                    color: AppColors.defaultText,
+                  ),
+                  todayColor: AppColors.accent.withOpacity(.6),
+                ),
               ),
-              initialSelectedDay:
-                  DateTime(DateTime.now().year, DateTime.now().month, 1),
-              onDaySelected: _daySelectedCallback,
-            ),
-            CardLavoroContainer(Provider.of<GlobalAppState>(context)
-                .dati[Provider.of<DateTimeAppState>(context).dataCorrente])
-          ],
+              SizedBox(
+                height: 5,
+              ),
+              CardLavoroContainer(Provider.of<GlobalAppState>(context)
+                  .dati[Provider.of<DateTimeAppState>(context).dataCorrente])
+            ],
+          ),
         ),
       ),
     );

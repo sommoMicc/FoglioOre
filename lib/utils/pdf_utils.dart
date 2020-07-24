@@ -3,26 +3,12 @@ import 'dart:io';
 import 'package:flutter_html_to_pdf/flutter_html_to_pdf.dart';
 import 'package:foglio_ore/model/cantiere.dart';
 import 'package:foglio_ore/model/lavoro.dart';
+import 'package:foglio_ore/utils/constants.dart';
 import 'package:foglio_ore/utils/data_provider.dart';
 import 'package:foglio_ore/utils/utils.dart';
 import 'package:path_provider/path_provider.dart';
 
 class PDFUtils {
-  static const List<String> MESI = [
-    "GENNAIO",
-    "FEBBRAIO",
-    "MARZO",
-    "APRILE",
-    "MAGGIO",
-    "GIUGNO",
-    "LUGLIO",
-    "AGOSTO",
-    "SETTEMBRE",
-    "OTTOBRE",
-    "NOVEMBRE",
-    "DICEMBRE"
-  ];
-
   static Future<File> generatePDF(Map<DateTime, List<Lavoro>> dati) async {
     String globalTemplate = await DataProvider.loadGlobalTemplate();
     String rowTemplate = await DataProvider.loadRowTemplate();
@@ -38,11 +24,14 @@ class PDFUtils {
         .replaceAll("[anno]", dati.keys.first.year.toString())
         .replaceAll("[mese]", MESI[dati.keys.first.month - 1]);
 
-    Directory appDocDir = await getApplicationDocumentsDirectory();
+    Directory appDocDir = await getTemporaryDirectory();
     String pdfStorageDirectory = appDocDir.path;
+    print("Directory del pdf: $pdfStorageDirectory");
 
     return await FlutterHtmlToPdf.convertFromHtmlContent(
-        finalHTML, pdfStorageDirectory, "test");
+        finalHTML,
+        pdfStorageDirectory,
+        "foglio_ore_${MESI[dati.keys.first.month - 1]}_${dati.keys.first.year}");
   }
 
   static String _parseRowTemplate(
