@@ -1,8 +1,8 @@
 enum Cantiere {
   Confindustria,
-  Assimoko,
+  Assimoco,
 }
 
 String cantiereToString(Cantiere input) {
-  return input == Cantiere.Assimoko ? "Assimoko" : "Confindustria";
+  return input == Cantiere.Assimoco ? "Assimoco" : "Confindustria";
 }

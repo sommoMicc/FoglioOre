@@ -23,7 +23,7 @@ class DataProvider {
           lavorato: giornoLavorativo,
         ),
         Lavoro(
-          cantiere: Cantiere.Assimoko,
+          cantiere: Cantiere.Assimoco,
           lavorato: giornoLavorativo &&
               dataDiPartenza.weekday % 2 == 0, //Solo martedì e giovedì
         )
