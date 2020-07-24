@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/FoglioOre-android.iml" filepath="$PROJECT_DIR$/.idea/modules/FoglioOre-android.iml" group="android" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android.iml" group="android" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android-app.iml" group="android/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="android/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/517437313/flutter_html_to_pdf.iml" filepath="$PROJECT_DIR$/.idea/modules/517437313/flutter_html_to_pdf.iml" group="android/flutter_html_to_pdf" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1299517217/flutter_mailer.iml" filepath="$PROJECT_DIR$/.idea/modules/1299517217/flutter_mailer.iml" group="android/flutter_mailer" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1717765877/flutter_plugin_pdf_viewer.iml" filepath="$PROJECT_DIR$/.idea/modules/-1717765877/flutter_plugin_pdf_viewer.iml" group="android/flutter_plugin_pdf_viewer" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/978725827/path_provider.iml" filepath="$PROJECT_DIR$/.idea/modules/978725827/path_provider.iml" group="android/path_provider" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/745452611/path_provider_linux.iml" filepath="$PROJECT_DIR$/.idea/modules/745452611/path_provider_linux.iml" group="android/path_provider_linux" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1239197702/path_provider_macos.iml" filepath="$PROJECT_DIR$/.idea/modules/1239197702/path_provider_macos.iml" group="android/path_provider_macos" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-275711722/sqflite.iml" filepath="$PROJECT_DIR$/.idea/modules/-275711722/sqflite.iml" group="android/sqflite" />
+    </modules>
+  </component>
+</project>
