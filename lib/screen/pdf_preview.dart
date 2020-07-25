@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_mailer/flutter_mailer.dart';
 import 'package:flutter_plugin_pdf_viewer/flutter_plugin_pdf_viewer.dart';
 import 'package:foglio_ore/model/stato.dart';
@@ -66,7 +67,12 @@ Antonella Rossi''',
                 ],
               );
 
-              await FlutterMailer.send(mailOptions);
+              try {
+                await FlutterMailer.send(mailOptions);
+                Navigator.of(context).pop(true);
+              } on PlatformException catch (_) {
+                Navigator.of(context).pop(false);
+              }
             },
           )
         ],

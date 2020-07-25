@@ -18,6 +18,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   CalendarController _calendarController;
+  GlobalKey<ScaffoldState> _scaffoldState = GlobalKey();
 
   @override
   void initState() {
@@ -60,6 +61,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldState,
       backgroundColor: AppColors.defaultBackground,
       appBar: AppBar(
         title: Text("Foglio ore"),
@@ -72,8 +74,23 @@ class _HomePageState extends State<HomePage> {
               var pdfFile = await PDFUtils.generatePDF(
                   Provider.of<GlobalAppState>(context, listen: false).dati);
               Navigator.of(context).pop(); //Nascondo la dialog
-              Navigator.of(context).push(
+              bool result = await Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => PDFPreview(pdfFile)));
+
+              _scaffoldState.currentState.showSnackBar(
+                SnackBar(
+                  content: Row(
+                    children: <Widget>[
+                      Icon(result ? Icons.email : Icons.error),
+                      SizedBox(width: 10),
+                      Text(result
+                          ? "Foglio ore inviato con successo"
+                          : "Errore nell'invio del foglio ore"),
+                    ],
+                  ),
+                  backgroundColor: result ? Colors.green[700] : Colors.red[700],
+                ),
+              );
             },
           )
         ],
@@ -95,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                     fontWeight: FontWeight.bold,
                   ),
                   titleTextBuilder: (DateTime data, locale) =>
-                      DateFormat.yMMMM(locale).format(data).toUpperCase(),
+                      DateFormat.yMMMMd(locale).format(data).toUpperCase(),
                   centerHeaderTitle: true,
                 ),
                 initialSelectedDay:
