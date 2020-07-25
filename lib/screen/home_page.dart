@@ -6,6 +6,7 @@ import 'package:foglio_ore/utils/constants.dart';
 import 'package:foglio_ore/utils/data_provider.dart';
 import 'package:foglio_ore/utils/pdf_utils.dart';
 import 'package:foglio_ore/widget/card_lavoro_container.dart';
+import 'package:foglio_ore/widget/circle_icon_button.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -64,8 +65,8 @@ class _HomePageState extends State<HomePage> {
         title: Text("Foglio ore"),
         actions: <Widget>[
           // action button
-          IconButton(
-            icon: Icon(Icons.check),
+          CircleIconButton(
+            icon: Icons.check,
             onPressed: () async {
               _showLoadingDialog();
               var pdfFile = await PDFUtils.generatePDF(

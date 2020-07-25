@@ -3,6 +3,7 @@ import 'package:foglio_ore/model/stato.dart';
 import 'package:foglio_ore/screen/home_page.dart';
 import 'package:foglio_ore/utils/constants.dart';
 import 'package:foglio_ore/utils/data_provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 
@@ -26,13 +27,24 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Foglio ore',
         theme: ThemeData.light().copyWith(
-          textTheme: ThemeData.light().textTheme.copyWith(
-                bodyText1: TextStyle(
-                  color: AppColors.defaultText,
-                ),
+          textTheme: kDefaultTextTheme,
+          appBarTheme: AppBarTheme.of(context).copyWith(
+            color: AppColors.defaultBackground,
+            elevation: kAppBarElevation,
+            textTheme: kDefaultTextTheme.copyWith(
+              headline6: GoogleFonts.firaSans(
+                color: AppColors.defaultText,
+                fontSize: kAppBarFontSize,
+                fontWeight: FontWeight.w900,
               ),
+            ),
+            iconTheme: IconTheme.of(context).copyWith(
+              color: AppColors.defaultText,
+            ),
+          ),
           primaryColor: AppColors.primary,
           accentColor: AppColors.accent,
           backgroundColor: AppColors.defaultBackground,

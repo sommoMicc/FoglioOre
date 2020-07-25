@@ -151,11 +151,13 @@ class _TextFieldContainerState extends State<TextFieldContainer> {
 
     return TextField(
       decoration: InputDecoration(
-          labelText: "Quanto hai lavorato?",
-          labelStyle: TextStyle(
-            fontSize: kLabelFontSize + 3,
-            color: AppColors.defaultText,
-          )),
+        labelText: "Quanto hai lavorato?",
+        labelStyle: TextStyle(
+          fontSize: kLabelFontSize + 3,
+          color: AppColors.defaultText,
+        ),
+        border: OutlineInputBorder(),
+      ),
       inputFormatters: [widget.maskFormatter],
       keyboardType: TextInputType.numberWithOptions(
         signed: false,

@@ -5,6 +5,7 @@ import 'package:flutter_mailer/flutter_mailer.dart';
 import 'package:flutter_plugin_pdf_viewer/flutter_plugin_pdf_viewer.dart';
 import 'package:foglio_ore/model/stato.dart';
 import 'package:foglio_ore/utils/constants.dart';
+import 'package:foglio_ore/widget/circle_icon_button.dart';
 import 'package:foglio_ore/widget/custom_pdf_viewer.dart';
 import 'package:provider/provider.dart';
 
@@ -43,8 +44,8 @@ class _PDFPreviewState extends State<PDFPreview> {
         title: Text("Anteprima"),
         actions: <Widget>[
           // action button
-          IconButton(
-            icon: Icon(Icons.send),
+          CircleIconButton(
+            icon: Icons.send,
             onPressed: () async {
               DateTime data =
                   Provider.of<DateTimeAppState>(context, listen: false)
