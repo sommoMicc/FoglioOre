@@ -31,6 +31,8 @@ dependencies:
   flutter_spinkit: "^4.1.2"
   flutter_mailer: ^0.4.1+1
   google_fonts: ^1.1.0
+  hive: ^1.4.2
+  hive_flutter: ^0.3.1
 
   flutter:
     sdk: flutter
@@ -41,8 +43,13 @@ dependencies:
   cupertino_icons: ^0.1.3
 
 dev_dependencies:
+  hive_generator: ^0.7.1
+  build_runner: 1.10.0
   flutter_test:
     sdk: flutter
+
+dependency_overrides:
+  analyzer: 0.39.14
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

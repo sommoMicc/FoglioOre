@@ -11,12 +11,12 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class HomePage extends StatefulWidget {
+class CompilazionePage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _CompilazionePageState createState() => _CompilazionePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _CompilazionePageState extends State<CompilazionePage> {
   CalendarController _calendarController;
   GlobalKey<ScaffoldState> _scaffoldState = GlobalKey();
 
@@ -71,11 +71,17 @@ class _HomePageState extends State<HomePage> {
             icon: Icons.check,
             onPressed: () async {
               _showLoadingDialog();
+
+              // Salvo foglio ore
+              await DataProvider.salvaFoglioOre(
+                  Provider.of<GlobalAppState>(context, listen: false));
+
               var pdfFile = await PDFUtils.generatePDF(
                   Provider.of<GlobalAppState>(context, listen: false).dati);
               Navigator.of(context).pop(); //Nascondo la dialog
-              bool result = await Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => PDFPreview(pdfFile)));
+              bool result = await Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => PDFPreview(pdfFile))) ??
+                  false;
 
               _scaffoldState.currentState.showSnackBar(
                 SnackBar(
@@ -116,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                   centerHeaderTitle: true,
                 ),
                 initialSelectedDay:
-                    DateTime(DateTime.now().year, DateTime.now().month, 1),
+                    Provider.of<GlobalAppState>(context).dati.keys.first,
                 onDaySelected: _daySelectedCallback,
                 calendarStyle: CalendarStyle(
                   weekdayStyle: TextStyle(

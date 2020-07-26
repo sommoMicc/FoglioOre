@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:foglio_ore/model/cantiere.dart';
+import 'package:foglio_ore/model/lavoro.dart';
 import 'package:foglio_ore/model/stato.dart';
-import 'package:foglio_ore/screen/home_page.dart';
+import 'package:foglio_ore/screen/riepilogo.dart';
 import 'package:foglio_ore/utils/constants.dart';
 import 'package:foglio_ore/utils/data_provider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  initializeDateFormatting('it_IT', null).then((_) => runApp(MyApp()));
+void main() async {
+  await initializeDateFormatting('it_IT', null);
+  await Hive.initFlutter();
+
+  Hive.registerAdapter<Cantiere>(CantiereAdapter());
+  Hive.registerAdapter<Lavoro>(LavoroAdapter());
+  Hive.registerAdapter<GlobalAppState>(GlobalAppStateAdapter());
+
+  await Hive.openBox(GlobalAppState.HIVE_BOX_NAME);
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -50,7 +63,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: AppColors.defaultBackground,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: HomePage(),
+        home: RiepilogoPage(),
       ),
     );
   }

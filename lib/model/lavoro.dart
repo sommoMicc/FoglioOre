@@ -1,6 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:foglio_ore/model/cantiere.dart';
 import 'package:foglio_ore/utils/utils.dart';
+import 'package:hive/hive.dart';
+
+part 'lavoro.g.dart';
 
 enum MotivoAssenza { NONE, PERMESSO, FERIE, LUTTO, FESTIVITA, ALTRO }
 
@@ -18,11 +21,16 @@ extension Stringify on MotivoAssenza {
   }
 }
 
+@HiveType(typeId: 92)
 class Lavoro with ChangeNotifier {
+  @HiveField(0)
   Cantiere _cantiere;
+  @HiveField(1)
   bool _lavorato;
 
+  @HiveField(2)
   MotivoAssenza _motivoAssenza;
+  @HiveField(3)
   int _minutiLavorati;
 
   Lavoro({
