@@ -40,7 +40,6 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
         title: 'Foglio ore',
         theme: ThemeData.light().copyWith(
           textTheme: kDefaultTextTheme,
