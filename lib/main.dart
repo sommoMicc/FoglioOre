@@ -11,11 +11,14 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 
+import 'model/lavoro.dart';
+
 void main() async {
   await initializeDateFormatting('it_IT', null);
   await Hive.initFlutter();
 
   Hive.registerAdapter<Cantiere>(CantiereAdapter());
+  Hive.registerAdapter<MotivoAssenza>(MotivoAssenzaAdapter());
   Hive.registerAdapter<Lavoro>(LavoroAdapter());
   Hive.registerAdapter<GlobalAppState>(GlobalAppStateAdapter());
 

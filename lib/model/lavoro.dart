@@ -5,7 +5,26 @@ import 'package:hive/hive.dart';
 
 part 'lavoro.g.dart';
 
-enum MotivoAssenza { NONE, PERMESSO, FERIE, LUTTO, FESTIVITA, ALTRO }
+@HiveType(typeId: 100)
+enum MotivoAssenza {
+  @HiveField(0)
+  NONE,
+
+  @HiveField(1)
+  PERMESSO,
+
+  @HiveField(2)
+  FERIE,
+
+  @HiveField(3)
+  LUTTO,
+
+  @HiveField(4)
+  FESTIVITA,
+
+  @HiveField(5)
+  ALTRO
+}
 
 extension Stringify on MotivoAssenza {
   String toLongString() {
