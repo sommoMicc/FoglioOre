@@ -25,6 +25,8 @@ class MotivoAssenzaAdapter extends TypeAdapter<MotivoAssenza> {
         return MotivoAssenza.FESTIVITA;
       case 5:
         return MotivoAssenza.ALTRO;
+      case 6:
+        return MotivoAssenza.MALATTIA;
       default:
         return null;
     }
@@ -50,6 +52,9 @@ class MotivoAssenzaAdapter extends TypeAdapter<MotivoAssenza> {
         break;
       case MotivoAssenza.ALTRO:
         writer.writeByte(5);
+        break;
+      case MotivoAssenza.MALATTIA:
+        writer.writeByte(6);
         break;
     }
   }

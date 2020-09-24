@@ -23,7 +23,10 @@ enum MotivoAssenza {
   FESTIVITA,
 
   @HiveField(5)
-  ALTRO
+  ALTRO,
+
+  @HiveField(6)
+  MALATTIA
 }
 
 extension Stringify on MotivoAssenza {
