@@ -60,6 +60,14 @@ class _CompilazionePageState extends State<CompilazionePage> {
 
   @override
   Widget build(BuildContext context) {
+    /*
+    final dati = Provider.of<GlobalAppState>(context).dati;
+    for (var key in dati.keys) {
+      print("dati[$key] = ${dati[key]}");
+    }
+    print(
+        "Data corrente: ${Provider.of<DateTimeAppState>(context).dataCorrente}");
+    */
     return Scaffold(
       key: _scaffoldState,
       backgroundColor: AppColors.defaultBackground,

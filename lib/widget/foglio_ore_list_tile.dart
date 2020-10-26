@@ -90,14 +90,12 @@ class FoglioOreListTile extends StatelessWidget {
 
   static Widget _creaWidgetCantiere(
       Cantiere cantiere, Map<DateTime, List<Lavoro>> dati) {
-    int currentYear = dati.keys.first.year;
-    int currentMonth = dati.keys.first.month;
 
     int totaleMinuti = 0;
 
-    for (int i = 1; i <= getGiorniDelMese(currentYear, currentMonth); i++) {
+    for (DateTime data in dati.keys) {
       Lavoro lavoroOdierno =
-          dati[DateTime(currentYear, currentMonth, i)][cantiere.index];
+          dati[data][cantiere.index];
 
       if (lavoroOdierno.lavorato) {
         totaleMinuti += lavoroOdierno.minutiLavorati;

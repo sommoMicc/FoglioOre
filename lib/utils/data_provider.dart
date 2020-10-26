@@ -12,10 +12,8 @@ class DataProvider {
     int giorniDelMese = getGiorniDelMese(year, month);
     Map<DateTime, List<Lavoro>> nuoviDati = {};
 
-    DateTime dataDiPartenza = DateTime(year, month, 0);
-
-    for (int i = 0; i < giorniDelMese; i++) {
-      dataDiPartenza = dataDiPartenza.add(Duration(days: 1));
+    for (int i = 1; i <= giorniDelMese; i++) {
+      DateTime dataDiPartenza = DateTime(year, month, i);
 
       bool giornoLavorativo = !(dataDiPartenza.weekday > 5);
 

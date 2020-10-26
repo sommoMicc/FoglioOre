@@ -14,5 +14,6 @@ String minutiToOrario(int tempo) {
 }
 
 int getGiorniDelMese(int anno, int mese) {
+  print("Giorni del mese $mese: ${DateTime(anno, mese + 1, 0).day}");
   return DateTime(anno, mese + 1, 0).day;
 }
